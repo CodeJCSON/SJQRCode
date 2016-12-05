@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SJViewController.h"
 
 @interface ViewController ()
 
@@ -25,5 +26,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)clickBtn:(id)sender {
+    [self presentViewController:[[SJViewController alloc] init] animated:YES completion:nil];
+}
 
 @end
