@@ -59,17 +59,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor grayColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     if ([self isCameraIsAuthorized]) {
         [self setupView];
     } else {
         UIAlertView *alert  =  [UIAlertView alertViewTitle:@"相机权限提示" message:kIsAuthorizedString  delegate:self cancelButtonTitle:@"知道了"];
         alert.tag = 1;
     }
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.scanningView scanning];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -87,6 +86,7 @@
     [self.view addSubview:self.preview];
     [self.view addSubview:self.scanningView];
     [self.cameraController showCaptureOnView:self.preview];
+    [self.scanningView scanning];
 }
 
 #pragma mark - The Camera is Authorized
