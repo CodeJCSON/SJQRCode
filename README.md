@@ -1,4 +1,8 @@
 # SJQRCode
+
+使用说明：1.读取相册中的二维码只支持ios8以上的系统 2.扫码二维码支持ios7以上的系统
+
+
 QRCode(二维码扫描) 使用iOS系统自带<AVFoundation/AVFoundation.h>框架，实现二维码的的扫描，代码主要分为三个模块，1.SJCameraViewController 配置相机属性 2. SJScanningView 建立视图 3. SJViewController 实现功能
 1. SJCameraViewControlle简介：
 // 配置和控制捕捉会话
@@ -65,5 +69,5 @@ QRCode(二维码扫描) 使用iOS系统自带<AVFoundation/AVFoundation.h>框架
 
 1：下载本代码
 2. 把SJQRCode放进去你的工程
-3. 跳转到[self presentViewController:[[SJViewController alloc] init] animated:YES completion:nil];
+3. 跳转到代码：[self presentViewController:[[SJViewController alloc] init] animated:YES completion:nil];
  
