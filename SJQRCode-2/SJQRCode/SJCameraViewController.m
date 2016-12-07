@@ -170,6 +170,8 @@ NSString *const SJCameraErrorFailedToAddInput = @"SJThumbnailNotification";
             qrCodeString = feature.messageString;
         }
     }
+        [self stopSession];
+    
     return qrCodeString;
 }
 
@@ -178,7 +180,10 @@ NSString *const SJCameraErrorFailedToAddInput = @"SJThumbnailNotification";
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputMetadataObjects:(NSArray *)metadataObjects
        fromConnection:(AVCaptureConnection *)connection {
-    [self.delegate didDetectCodes:metadataObjects];
+    if (metadataObjects.count > 0) {
+        [self stopSession];
+        [self.delegate didDetectCodes:metadataObjects];
+    }
 }
 
 @end

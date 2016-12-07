@@ -580,6 +580,7 @@
 				FB9BD2851DF514CF00644EF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB9BD2861DF514CF00644EF2 /* Build configuration list for PBXNativeTarget "SJQRCode-2Tests" */ = {
 			isa = XCConfigurationList;
@@ -588,6 +589,7 @@
 				FB9BD2881DF514CF00644EF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FB9BD2891DF514CF00644EF2 /* Build configuration list for PBXNativeTarget "SJQRCode-2UITests" */ = {
 			isa = XCConfigurationList;
@@ -596,6 +598,7 @@
 				FB9BD28B1DF514CF00644EF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

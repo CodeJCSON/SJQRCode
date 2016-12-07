@@ -20,9 +20,10 @@
 
 @interface SJViewController ()<SJCameraControllerDelegate,SJScanningViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIAlertViewDelegate>
 
+@property (nonatomic, strong) UIView *preview;
 @property (nonatomic, strong) SJScanningView *scanningView;
 @property (nonatomic, strong) SJCameraViewController *cameraController;
-@property (nonatomic, strong) UIView *preview;
+@property (nonatomic, strong) UIImagePickerController *pickerController;
 
 @end
 
@@ -51,6 +52,16 @@
         _cameraController.delegate = self;
     }
     return _cameraController;
+}
+
+- (UIImagePickerController *)pickerController {
+    if (!_pickerController) {
+        _pickerController = [[UIImagePickerController alloc] init];
+        _pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        _pickerController.delegate = self;
+        _pickerController.allowsEditing = NO;
+    }
+    return _pickerController;
 }
 
 #pragma mark - Life Cycle
@@ -104,24 +115,25 @@
 #pragma mark - SJCameraControllerDelegate
 
 - (void)didDetectCodes:(NSArray *)codesArr {
+    [self.scanningView removeScanningAnimations];
+    
     NSString *metadataString = nil;
-    if (codesArr.count > 0) {
-        AudioServicesPlaySystemSound(1360);
-        AVMetadataMachineReadableCodeObject *MetadataObject = [codesArr objectAtIndex:0];
-        metadataString = MetadataObject.stringValue;
-    }
+    AudioServicesPlaySystemSound(1360);
+    AVMetadataMachineReadableCodeObject *MetadataObject = [codesArr objectAtIndex:0];
+    metadataString = MetadataObject.stringValue;
    [UIAlertView alertViewTitle:@"tip" message:metadataString delegate:self cancelButtonTitle:@"取消"];
 }
 
-#pragma mark - SJScanningViewDelegate barBUttonItem 点击事件
+#pragma mark - SJScanningViewDelegate BarBUttonItem 点击事件
 
 - (void)clickBarButtonItemSJButtonType:(SJButtonType)type {
-    [self.cameraController stopSession];
     if (type == SJButtonTypeReturn) {
+        [self.cameraController stopSession];
         [self dismissViewControllerAnimated:YES completion:nil];
     } else if (type == SJButtonTypeFlash) {
         [self setFlashMode];
     } else if (type == SJButtonTypeAlbum) {
+        [self.cameraController stopSession];
         [self openImagePickerController];
     }
 }
@@ -151,11 +163,7 @@
 #pragma mark - Open imagePickController
 
 - (void)openImagePickerController {
-    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
-    pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    pickerController.delegate = self;
-    pickerController.allowsEditing = NO;
-    [self presentViewController:pickerController animated:YES completion:nil];
+    [self presentViewController:self.pickerController animated:YES completion:nil];
 }
 
 #pragma mark - UIImagePickerControllerDelegate 

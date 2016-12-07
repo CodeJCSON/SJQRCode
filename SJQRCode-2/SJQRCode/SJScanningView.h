@@ -25,9 +25,9 @@ typedef NS_ENUM(NSInteger, SJButtonType){
 @interface SJScanningView : UIView
 
 @property (nonatomic, assign) BOOL isRestrict;
-@property (nonatomic, strong) UIImageView *scanningImageView;
 @property (nonatomic, assign) id<SJScanningViewDelegate> scanningDelegate;
 
 - (void)scanning;
+- (void)removeScanningAnimations;
 
 @end

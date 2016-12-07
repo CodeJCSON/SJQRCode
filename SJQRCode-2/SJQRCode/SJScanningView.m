@@ -21,10 +21,11 @@ static CGRect scanningRect;
 
 @interface SJScanningView ()
 
-@property (nonatomic, strong) UILabel *QRCodeTipLabel;
-@property (nonatomic, strong) AVCaptureVideoPreviewLayer *preViewLayer;
 @property (nonatomic, assign) CGRect cleanRect;
 @property (nonatomic, assign) CGRect scanningRect;
+@property (nonatomic, strong) UILabel *QRCodeTipLabel;
+@property (nonatomic, strong) UIImageView *scanningImageView;
+@property (nonatomic, strong) AVCaptureVideoPreviewLayer *preViewLayer;
 
 @end
 
@@ -120,6 +121,14 @@ static CGRect scanningRect;
     NSLog(@"scanningImageView.frame=%@",NSStringFromCGRect(animatationRect));
     [UIView commitAnimations];
 }
+
+#pragma mark - Remove ScaningImageViAnimations
+
+- (void)removeScanningAnimations {
+    [self.scanningImageView.layer removeAllAnimations];
+};
+
+#pragma mark - Setup BarBottomItem
 
 - (void)drawBarBottomItems {
     UIButton *returnBtn = [self createButtonImageString:@"qrcode_scan_titlebar_back_nor" heightImageString:@"qrcode_scan_titlebar_back_nor" buttonType:SJButtonTypeReturn];
