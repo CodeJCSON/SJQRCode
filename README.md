@@ -58,7 +58,11 @@ QRCode(二维码扫描) 使用iOS系统自带<AVFoundation/AVFoundation.h>框架
     metadataString = MetadataObject.stringValue;
    [UIAlertView alertViewTitle:@"tip" message:metadataString delegate:self cancelButtonTitle:@"取消"];
 }
-－－－－－如何使用
+
+
+关于如何使用：
+
+
 1：下载本代码
 2. 把SJQRCode放进去你的工程
 3. 跳转到[self presentViewController:[[SJViewController alloc] init] animated:YES completion:nil];
