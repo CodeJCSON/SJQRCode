@@ -7,10 +7,12 @@
 //
 //  读取相册中的二维码只支持ios8以上的系统
 //
+// 项目还未完成，将继续更新。
 //
 //
+// 初次封装代码，有不足的地方，请大神指教  邮箱：15220092519@163.com
 //
-
+//
 #import "SJViewController.h"
 #import "SJScanningView.h"
 #import "SJCameraViewController.h"
