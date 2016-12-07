@@ -17,6 +17,7 @@
 
 @protocol SJCameraControllerDelegate <NSObject>
 
+/** 扫描二维码结果 */
 - (void)didDetectCodes:(NSArray *)codesArr;
 
 @end
@@ -33,22 +34,27 @@ typedef NS_ENUM(NSInteger, SJCameraErrorCode) {
 
 @property (nonatomic, assign) id <SJCameraControllerDelegate> delegate;
 @property (nonatomic, strong) AVCaptureSession *captureSession;
+/** 捕捉区域暂时未用到 */
 @property (nonatomic, assign) CGRect rectrectOfInterest;
+/** 检测手电筒是否能用 */
 @property (nonatomic, assign) BOOL cameraHasTorch;
+/** 手电筒模式 */
 @property (nonatomic, assign) AVCaptureTorchMode torchMode;
 
-// Session Configuration
-- (void)stopSession;
+/** 配置会话 */
 - (void)startSession;
+- (void)stopSession;
 - (BOOL)setupSession:(NSError **)error;
 
-
+/** 设置相机最大支持的分辨率 */
 - (NSString *)sessionPreset;
+/** 配置输入输出 */
 - (BOOL)setupSessionInputs:(NSError **)error;
 - (BOOL)setupSessionOutputs:(NSError **)error;
 
+/** 设置相机显示的UIView */
 - (void)showCaptureOnView:(UIView *)preview;
-
+/** 读取相册里面二维码的信息 */
 - (NSString *)readAlbumQRCodeImage:(UIImage *)imagePicker;
 
 @end

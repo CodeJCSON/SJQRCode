@@ -16,6 +16,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
+/** 按钮的类型 */
 typedef NS_ENUM(NSInteger, SJButtonType){
     SJButtonTypeReturn = 1,
     SJButtonTypeAlbum,
@@ -24,16 +25,20 @@ typedef NS_ENUM(NSInteger, SJButtonType){
 
 @protocol SJScanningViewDelegate <NSObject>
 
+/** 按钮的点击事件的代理 */
 - (void)clickBarButtonItemSJButtonType:(SJButtonType)type;
 
 @end
 
 @interface SJScanningView : UIView
 
+/** 是否授权 */
 @property (nonatomic, assign) BOOL isRestrict;
 @property (nonatomic, assign) id<SJScanningViewDelegate> scanningDelegate;
 
+/** 设置动画 */
 - (void)scanning;
+/** 移除动画 */
 - (void)removeScanningAnimations;
 
 @end
