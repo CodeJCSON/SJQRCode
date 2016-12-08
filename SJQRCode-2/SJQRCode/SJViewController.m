@@ -119,7 +119,7 @@
 
 #pragma mark - SJScanningViewDelegate BarBUttonItem 点击事件
 
-/** 按钮的惦记事件 */
+/** 按钮的点击事件 */
 - (void)clickBarButtonItemSJButtonType:(SJButtonType)type {
     if (type == SJButtonTypeReturn) {
         [self.cameraController stopSession];
@@ -127,7 +127,6 @@
     } else if (type == SJButtonTypeTorch) {
         [self setTorchMode];
     } else if (type == SJButtonTypeAlbum) {
-        [self.cameraController stopSession];
         [self openImagePickerController];
     }
 }
