@@ -179,10 +179,15 @@ NSString *const SJCameraErrorFailedToAddInput = @"SJThumbnailNotification";
             qrCodeString = feature.messageString;
         }
     }
+
+    NSString *alertMessageString = nil;
     if (qrCodeString) {
+        alertMessageString = qrCodeString;
         [self stopSession];
+    } else {
+        alertMessageString = @"照片中未检测到二维码";
     }
-    return qrCodeString;
+    return alertMessageString;
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate Delagate
@@ -192,7 +197,11 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
        fromConnection:(AVCaptureConnection *)connection {
     if (metadataObjects.count > 0) {
         [self stopSession];
-        [self.delegate didDetectCodes:metadataObjects];
+        NSString *metadataString = nil;
+        AudioServicesPlaySystemSound(1360);
+        AVMetadataMachineReadableCodeObject *MetadataObject = [metadataObjects objectAtIndex:0];
+        metadataString = MetadataObject.stringValue;
+        [self.delegate didDetectCodes:metadataString];
     }
 }
 

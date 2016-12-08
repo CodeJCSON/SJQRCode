@@ -19,13 +19,13 @@
 		FB9BD2961DF514F500644EF2 /* SJScanningView.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9BD2901DF514F500644EF2 /* SJScanningView.m */; };
 		FB9BD2971DF514F500644EF2 /* SJViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9BD2921DF514F500644EF2 /* SJViewController.m */; };
 		FB9BD2981DF514F500644EF2 /* UIAlertView+SJAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = FB9BD2941DF514F500644EF2 /* UIAlertView+SJAddtions.m */; };
-		FB9BD2A01DF5183B00644EF2 /* qrcode_scan_btn_photo_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9BD29A1DF5183B00644EF2 /* qrcode_scan_btn_photo_nor@2x.png */; };
-		FB9BD2A11DF5183B00644EF2 /* qrcode_scan_titlebar_back_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9BD29B1DF5183B00644EF2 /* qrcode_scan_titlebar_back_nor@2x.png */; };
+		FB9BD2A11DF5183B00644EF2 /* qrcode_scan_back_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9BD29B1DF5183B00644EF2 /* qrcode_scan_back_nor@2x.png */; };
 		FB9BD2A21DF5183B00644EF2 /* ScanQR1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9BD29C1DF5183B00644EF2 /* ScanQR1@2x.png */; };
 		FB9BD2A31DF5183B00644EF2 /* ScanQR2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9BD29D1DF5183B00644EF2 /* ScanQR2@2x.png */; };
 		FB9BD2A41DF5183B00644EF2 /* ScanQR3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9BD29E1DF5183B00644EF2 /* ScanQR3@2x.png */; };
 		FB9BD2A51DF5183B00644EF2 /* ScanQR4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9BD29F1DF5183B00644EF2 /* ScanQR4@2x.png */; };
-		FB9BD2A71DF518ED00644EF2 /* flash_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9BD2A61DF518ED00644EF2 /* flash_icon@2x.png */; };
+		FB9BD2A71DF518ED00644EF2 /* qrcode_scan_torch_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9BD2A61DF518ED00644EF2 /* qrcode_scan_torch_nor@2x.png */; };
+		FB9BD4D91DF93ABA00644EF2 /* qrcode_scan_pic_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FB9BD4D81DF93ABA00644EF2 /* qrcode_scan_pic_nor@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,13 +70,13 @@
 		FB9BD2921DF514F500644EF2 /* SJViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJViewController.m; sourceTree = "<group>"; };
 		FB9BD2931DF514F500644EF2 /* UIAlertView+SJAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+SJAddtions.h"; sourceTree = "<group>"; };
 		FB9BD2941DF514F500644EF2 /* UIAlertView+SJAddtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+SJAddtions.m"; sourceTree = "<group>"; };
-		FB9BD29A1DF5183B00644EF2 /* qrcode_scan_btn_photo_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcode_scan_btn_photo_nor@2x.png"; sourceTree = "<group>"; };
-		FB9BD29B1DF5183B00644EF2 /* qrcode_scan_titlebar_back_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcode_scan_titlebar_back_nor@2x.png"; sourceTree = "<group>"; };
+		FB9BD29B1DF5183B00644EF2 /* qrcode_scan_back_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcode_scan_back_nor@2x.png"; sourceTree = "<group>"; };
 		FB9BD29C1DF5183B00644EF2 /* ScanQR1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR1@2x.png"; sourceTree = "<group>"; };
 		FB9BD29D1DF5183B00644EF2 /* ScanQR2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR2@2x.png"; sourceTree = "<group>"; };
 		FB9BD29E1DF5183B00644EF2 /* ScanQR3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR3@2x.png"; sourceTree = "<group>"; };
 		FB9BD29F1DF5183B00644EF2 /* ScanQR4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ScanQR4@2x.png"; sourceTree = "<group>"; };
-		FB9BD2A61DF518ED00644EF2 /* flash_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash_icon@2x.png"; sourceTree = "<group>"; };
+		FB9BD2A61DF518ED00644EF2 /* qrcode_scan_torch_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcode_scan_torch_nor@2x.png"; sourceTree = "<group>"; };
+		FB9BD4D81DF93ABA00644EF2 /* qrcode_scan_pic_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qrcode_scan_pic_nor@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,9 +186,9 @@
 		FB9BD2991DF5183B00644EF2 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				FB9BD2A61DF518ED00644EF2 /* flash_icon@2x.png */,
-				FB9BD29A1DF5183B00644EF2 /* qrcode_scan_btn_photo_nor@2x.png */,
-				FB9BD29B1DF5183B00644EF2 /* qrcode_scan_titlebar_back_nor@2x.png */,
+				FB9BD4D81DF93ABA00644EF2 /* qrcode_scan_pic_nor@2x.png */,
+				FB9BD2A61DF518ED00644EF2 /* qrcode_scan_torch_nor@2x.png */,
+				FB9BD29B1DF5183B00644EF2 /* qrcode_scan_back_nor@2x.png */,
 				FB9BD29C1DF5183B00644EF2 /* ScanQR1@2x.png */,
 				FB9BD29D1DF5183B00644EF2 /* ScanQR2@2x.png */,
 				FB9BD29E1DF5183B00644EF2 /* ScanQR3@2x.png */,
@@ -305,12 +305,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB9BD2A31DF5183B00644EF2 /* ScanQR2@2x.png in Resources */,
-				FB9BD2A11DF5183B00644EF2 /* qrcode_scan_titlebar_back_nor@2x.png in Resources */,
-				FB9BD2A71DF518ED00644EF2 /* flash_icon@2x.png in Resources */,
+				FB9BD2A11DF5183B00644EF2 /* qrcode_scan_back_nor@2x.png in Resources */,
+				FB9BD2A71DF518ED00644EF2 /* qrcode_scan_torch_nor@2x.png in Resources */,
 				FB9BD2691DF514CF00644EF2 /* LaunchScreen.storyboard in Resources */,
+				FB9BD4D91DF93ABA00644EF2 /* qrcode_scan_pic_nor@2x.png in Resources */,
 				FB9BD2A21DF5183B00644EF2 /* ScanQR1@2x.png in Resources */,
 				FB9BD2661DF514CF00644EF2 /* Assets.xcassets in Resources */,
-				FB9BD2A01DF5183B00644EF2 /* qrcode_scan_btn_photo_nor@2x.png in Resources */,
 				FB9BD2A41DF5183B00644EF2 /* ScanQR3@2x.png in Resources */,
 				FB9BD2641DF514CF00644EF2 /* Main.storyboard in Resources */,
 				FB9BD2A51DF5183B00644EF2 /* ScanQR4@2x.png in Resources */,

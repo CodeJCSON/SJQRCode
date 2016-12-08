@@ -124,7 +124,6 @@ static CGRect scanningRect;
     [UIView setAnimationRepeatAutoreverses:NO];
 
     self.scanningImageView.frame = animatationRect;
-    NSLog(@"scanningImageView.frame=%@",NSStringFromCGRect(animatationRect));
     [UIView commitAnimations];
 }
 
@@ -137,12 +136,13 @@ static CGRect scanningRect;
 #pragma mark - Setup BarBottomItem
 
 - (void)drawBarBottomItems {
-    UIButton *returnBtn = [self createButtonImageString:@"qrcode_scan_titlebar_back_nor" heightImageString:@"qrcode_scan_titlebar_back_nor" buttonType:SJButtonTypeReturn];
-    UIButton *flashBtn = [self createButtonImageString:@"flash_icon" heightImageString:@"flash_icon" buttonType:SJButtonTypeFlash];
-    UIButton *albumBtn = [self createButtonImageString:@"qrcode_scan_btn_photo_nor" heightImageString:@"qrcode_scan_btn_photo_nor" buttonType:SJButtonTypeAlbum];
-    [self addSubview:returnBtn];
-    [self addSubview:flashBtn];
-    [self addSubview:albumBtn];
+    self.returenButton = [self createButtonImageString:@"qrcode_scan_back_nor" heightImageString:@"qrcode_scan_back_nor" buttonType:SJButtonTypeReturn];
+    self.torchButton = [self createButtonImageString:@"qrcode_scan_torch_nor" heightImageString:@"qrcode_scan_torch_nor" buttonType:SJButtonTypeTorch];
+    self.albumButton = [self createButtonImageString:@"qrcode_scan_pic_nor" heightImageString:@"qrcode_scan_pic_nor" buttonType:SJButtonTypeAlbum];
+    
+    [self addSubview:self.returenButton];
+    [self addSubview:self.torchButton];
+    [self addSubview:self.albumButton];
 }
 
 - (UIButton *)createButtonImageString:(NSString *)imageString heightImageString:(NSString *)hImageString buttonType:(SJButtonType)btnType{
@@ -155,7 +155,7 @@ static CGRect scanningRect;
     
     if (btnType == SJButtonTypeReturn) {
         button.frame = CGRectMake(kBtnMargin, kBtnTopMargin, kBtnWidth, kBtnWidth);
-    }else if (btnType == SJButtonTypeFlash) {
+    }else if (btnType == SJButtonTypeTorch) {
         button.frame = CGRectMake(CGRectGetWidth(self.bounds) - kBtnMargin - kBtnWidth, kBtnTopMargin, kBtnWidth, kBtnWidth);
     }else if (btnType == SJButtonTypeAlbum) {
         button.frame = CGRectMake(CGRectGetWidth(self.bounds) - (kBtnMargin + kBtnWidth) * 2, kBtnTopMargin, kBtnWidth, kBtnWidth);
@@ -208,6 +208,5 @@ static CGRect scanningRect;
     CGContextSetLineWidth(contextRef, padding);
     CGContextSetStrokeColorWithColor(contextRef, [UIColor whiteColor].CGColor);
     CGContextStrokePath(contextRef);
-    NSLog(@"%@",NSStringFromCGRect(self.cleanRect));
 }
 @end

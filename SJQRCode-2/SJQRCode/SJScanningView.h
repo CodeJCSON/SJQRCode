@@ -20,7 +20,7 @@
 typedef NS_ENUM(NSInteger, SJButtonType){
     SJButtonTypeReturn = 1,
     SJButtonTypeAlbum,
-    SJButtonTypeFlash,
+    SJButtonTypeTorch,
 };
 
 @protocol SJScanningViewDelegate <NSObject>
@@ -32,6 +32,12 @@ typedef NS_ENUM(NSInteger, SJButtonType){
 
 @interface SJScanningView : UIView
 
+/** 返回按钮 */
+@property (nonatomic, strong) UIButton *returenButton;
+/** 相册按钮 */
+@property (nonatomic, strong) UIButton *albumButton;
+/** 手电筒按钮 */
+@property (nonatomic, strong) UIButton *torchButton;
 /** 是否授权 */
 @property (nonatomic, assign) BOOL isRestrict;
 @property (nonatomic, assign) id<SJScanningViewDelegate> scanningDelegate;

@@ -96,6 +96,7 @@
 
 #pragma mark - SetUp View
 
+/** 建立视图 */
 - (void)setupView {
     [self.view addSubview:self.preview];
     [self.view addSubview:self.scanningView];
@@ -105,6 +106,7 @@
 
 #pragma mark - The Camera is Authorized
 
+/** 是否授权 */
 - (BOOL)isCameraIsAuthorized {
     AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if(authStatus == AVAuthorizationStatusDenied){
@@ -115,35 +117,25 @@
     return YES;
 }
 
-#pragma mark - SJCameraControllerDelegate
-
-- (void)didDetectCodes:(NSArray *)codesArr {
-    [self.scanningView removeScanningAnimations];
-    
-    NSString *metadataString = nil;
-    AudioServicesPlaySystemSound(1360);
-    AVMetadataMachineReadableCodeObject *MetadataObject = [codesArr objectAtIndex:0];
-    metadataString = MetadataObject.stringValue;
-   [UIAlertView alertViewTitle:@"tip" message:metadataString delegate:self cancelButtonTitle:@"取消"];
-}
-
 #pragma mark - SJScanningViewDelegate BarBUttonItem 点击事件
 
+/** 按钮的惦记事件 */
 - (void)clickBarButtonItemSJButtonType:(SJButtonType)type {
     if (type == SJButtonTypeReturn) {
         [self.cameraController stopSession];
         [self dismissViewControllerAnimated:YES completion:nil];
-    } else if (type == SJButtonTypeFlash) {
-        [self setFlashMode];
+    } else if (type == SJButtonTypeTorch) {
+        [self setTorchMode];
     } else if (type == SJButtonTypeAlbum) {
         [self.cameraController stopSession];
         [self openImagePickerController];
     }
 }
 
-#pragma mark - Button Action 
+#pragma mark - Configuration Torch
 
-- (void)setFlashMode {
+/** 配置手电筒 */
+- (void)setTorchMode {
     if ([self.cameraController cameraHasTorch]) {
         [self configurationTorch];
     } else {
@@ -151,10 +143,11 @@
     }
 }
 
-#pragma mark - Configuration Torch
+#pragma mark - Torch Click
+
 
 - (void)configurationTorch {
-    UIButton *button = [self.scanningView viewWithTag:SJButtonTypeFlash];
+    UIButton *button = [self.scanningView viewWithTag:SJButtonTypeTorch];
     button.selected = !button.selected;
     if (button.selected) {
         [self.cameraController setTorchMode:AVCaptureTorchModeOn];
@@ -165,27 +158,31 @@
 
 #pragma mark - Open imagePickController
 
+/** 打开相册 */
 - (void)openImagePickerController {
     [self presentViewController:self.pickerController animated:YES completion:nil];
 }
 
+#pragma mark - SJCameraControllerDelegate 
+
+/** codesString 扫描二维码返回的结果 */
+- (void)didDetectCodes:(NSString *)codesString {
+    [self.scanningView removeScanningAnimations];
+    [UIAlertView alertViewTitle:@"tip" message:codesString delegate:self cancelButtonTitle:@"取消"];
+}
+
+
 #pragma mark - UIImagePickerControllerDelegate 
 
+/** alertMessageString 读取相册中二维码相册的结果*/
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info; {
     UIImage *pickerImage= [info objectForKey:UIImagePickerControllerOriginalImage];
     NSString *resultString = nil;
     if (kiOS8 >= 8.0) {
       resultString = [self.cameraController readAlbumQRCodeImage:pickerImage];
-        NSLog(@"resultString --%@",resultString);
     }
-    //返回图片最后扫描的结果
-    NSString *alertMessageString = nil;
-    if (resultString) {
-        alertMessageString = resultString;
-    } else {
-        alertMessageString = @"照片中未检测到二维码";
-    }
-    [UIAlertView alertViewTitle:@"tip" message:alertMessageString delegate:self cancelButtonTitle:@"取消"];
+
+    [UIAlertView alertViewTitle:@"tip" message:resultString delegate:self cancelButtonTitle:@"取消"];
 }
 
 #pragma mark - UIAlertViewDelegate

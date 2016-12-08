@@ -18,13 +18,14 @@
 @protocol SJCameraControllerDelegate <NSObject>
 
 /** 扫描二维码结果 */
-- (void)didDetectCodes:(NSArray *)codesArr;
+- (void)didDetectCodes:(NSString *)codesString;
 
 @end
 
 FOUNDATION_EXPORT NSString *const SJCameraErrorDomain;
 FOUNDATION_EXPORT NSString *const SJCameraErrorFailedToAddInput;
 
+/** 会话的错误信息 */
 typedef NS_ENUM(NSInteger, SJCameraErrorCode) {
     SJCameraErrorCodeFailedToAddInput = 98,
     SJCameraErrorCodeFailedToAddOutput    ,
