@@ -85,10 +85,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -122,7 +118,6 @@
 /** 按钮的点击事件 */
 - (void)clickBarButtonItemSJButtonType:(SJButtonType)type {
     if (type == SJButtonTypeReturn) {
-        [self.cameraController stopSession];
         [self dismissViewControllerAnimated:YES completion:nil];
     } else if (type == SJButtonTypeTorch) {
         [self setTorchMode];
@@ -199,6 +194,10 @@
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
+}
+
+- (void)dealloc {
+    [self.cameraController stopSession];
 }
 
 @end

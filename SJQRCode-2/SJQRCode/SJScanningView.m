@@ -111,11 +111,10 @@ static CGRect scanningRect;
 }
 
 - (void)scanning {
-    NSLog(@"%@",NSStringFromCGRect(scanningRect));
     self.scanningImageView.frame = scanningRect;
     CGRect animatationRect = scanningRect;
     animatationRect.origin.y += CGRectGetWidth(self.bounds) - CGRectGetMinX(animatationRect) * 2 - CGRectGetHeight(animatationRect);
-    NSLog(@"%f",animatationRect.origin.y);
+
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelay:0];
     [UIView setAnimationDuration:1.2];
@@ -171,8 +170,7 @@ static CGRect scanningRect;
 }
 
 - (void)drawRect:(CGRect)rect {
-  
-    NSLog(@"%@",NSStringFromCGRect(rect));
+
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(contextRef, self.backgroundColor.CGColor);
     CGContextFillRect(contextRef, rect);
