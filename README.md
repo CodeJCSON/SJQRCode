@@ -78,4 +78,8 @@ QRCode(二维码扫描) 使用iOS系统自带<AVFoundation/AVFoundation.h>框架
 1：下载本代码
 2. 把SJQRCode放进去你的工程
 3. 跳转到代码：[self presentViewController:[[SJViewController alloc] init] animated:YES completion:nil];
+
+如果想了解二维码和条形码的更多类型，请到博客http://blog.csdn.net/sunjie886/article/details/53304913了解。
+
+如有问题，请留言。或者邮件，请大家多多指点，谢谢大家。
  
