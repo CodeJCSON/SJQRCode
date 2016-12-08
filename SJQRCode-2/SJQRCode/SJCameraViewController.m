@@ -182,6 +182,7 @@ NSString *const SJCameraErrorFailedToAddInput = @"SJThumbnailNotification";
 
     NSString *alertMessageString = nil;
     if (qrCodeString) {
+        [self stopSession];
         alertMessageString = qrCodeString;
     } else {
         alertMessageString = @"照片中未检测到二维码";
@@ -194,7 +195,11 @@ NSString *const SJCameraErrorFailedToAddInput = @"SJThumbnailNotification";
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputMetadataObjects:(NSArray *)metadataObjects
        fromConnection:(AVCaptureConnection *)connection {
-    if (metadataObjects.count > 0) {
+    [self stopSession];
+    NSLog(@"metadataObjects:%@",metadataObjects);
+    BOOL isAvailable = YES;
+    if (metadataObjects.count > 0 && isAvailable == YES) {
+        isAvailable = NO;
         NSString *metadataString = nil;
         AudioServicesPlaySystemSound(1360);
         AVMetadataMachineReadableCodeObject *MetadataObject = [metadataObjects objectAtIndex:0];
