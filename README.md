@@ -78,10 +78,11 @@ QRCode(二维码扫描) 使用iOS系统自带<AVFoundation/AVFoundation.h>框架
 1：下载本代码
 2. 把SJQRCode放进去你的工程
 3. 增加代码： 
-   SJViewController *viewController = [[SJViewController alloc] init];
    
-    /** successString 扫描成功返回来的数据 */
+   
     
+    SJViewController *viewController = [[SJViewController alloc] init];
+    /** successString 扫描成功返回来的数据 */
     viewController.successBlock = ^(NSString *successString) {
     
         [self dismissViewControllerAnimated:YES completion:nil];
