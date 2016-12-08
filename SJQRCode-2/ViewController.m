@@ -15,6 +15,7 @@
 
 #import "ViewController.h"
 #import "SJViewController.h"
+#import "UIAlertView+SJAddtions.h"
 
 @interface ViewController ()
 
@@ -34,7 +35,16 @@
 }
 
 - (IBAction)clickBtn:(id)sender {
-    [self presentViewController:[[SJViewController alloc] init] animated:YES completion:nil];
+    SJViewController *viewController = [[SJViewController alloc] init];
+  
+    /** 扫描成功返回来的数据 */
+    viewController.successBlock = ^(NSString *successString) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        NSLog(@"successBlock=%@",successString);
+        [UIAlertView alertViewTitle:@"tip" message:successString delegate:self cancelButtonTitle:@"取消"];
+    };
+    
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
 @end

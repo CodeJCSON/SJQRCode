@@ -167,7 +167,9 @@
 /** codesString 扫描二维码返回的结果 */
 - (void)didDetectCodes:(NSString *)codesString {
     [self.scanningView removeScanningAnimations];
-    [UIAlertView alertViewTitle:@"tip" message:codesString delegate:self cancelButtonTitle:@"取消"];
+    if (self.successBlock) {
+        self.successBlock(codesString);
+    }
 }
 
 
@@ -178,10 +180,11 @@
     UIImage *pickerImage= [info objectForKey:UIImagePickerControllerOriginalImage];
     NSString *resultString = nil;
     if (kiOS8 >= 8.0) {
-      resultString = [self.cameraController readAlbumQRCodeImage:pickerImage];
+        resultString = [self.cameraController readAlbumQRCodeImage:pickerImage];
+        if (self.successBlock) {
+            self.successBlock(resultString);
+        }
     }
-
-    [UIAlertView alertViewTitle:@"tip" message:resultString delegate:self cancelButtonTitle:@"取消"];
 }
 
 #pragma mark - UIAlertViewDelegate

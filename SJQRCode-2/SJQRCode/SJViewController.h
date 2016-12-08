@@ -13,10 +13,15 @@
 //
 //
 
+
 #import <UIKit/UIKit.h>
+
+typedef void(^SJViewControllerSuccessBlock)(NSString *);
 
 @interface SJViewController : UIViewController
 
+/** 扫描成功回调block */
+@property (nonatomic, copy) SJViewControllerSuccessBlock successBlock;
 
 @end
 
