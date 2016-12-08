@@ -19,6 +19,7 @@
 #import "UIAlertView+SJAddtions.h"
 
 #define kIsAuthorizedString @"请在iOS - 设置 － 隐私 － 相机 中打开相机权限"
+#define kiOS8 [[UIDevice currentDevice].systemVersion integerValue]
 
 @interface SJViewController ()<SJCameraControllerDelegate,SJScanningViewDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UIAlertViewDelegate>
 
@@ -173,8 +174,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info; {
     UIImage *pickerImage= [info objectForKey:UIImagePickerControllerOriginalImage];
     NSString *resultString = nil;
-    if (__IPHONE_8_0) {
+    if (kiOS8 >= 8.0) {
       resultString = [self.cameraController readAlbumQRCodeImage:pickerImage];
+        NSLog(@"resultString --%@",resultString);
     }
     //返回图片最后扫描的结果
     NSString *alertMessageString = nil;

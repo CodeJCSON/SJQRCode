@@ -166,20 +166,22 @@ NSString *const SJCameraErrorFailedToAddInput = @"SJThumbnailNotification";
 #pragma mark - Read the photo album of QRCode  读取相册的中二维码
 
 - (NSString *)readAlbumQRCodeImage:(UIImage *)imagePicker {
-    CIContext *imageContext = [CIContext contextWithOptions:nil];
-    CIImage *image = [CIImage imageWithCGImage:imagePicker.CGImage];
-    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:imageContext options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
-    NSArray *qrcodeArr = [detector featuresInImage:image];
+    CIImage *qrcodeImage = [CIImage imageWithCGImage:imagePicker.CGImage];
+    CIContext *qrcodeContext = [CIContext contextWithOptions:nil];
+    CIDetector *qrcodeDetector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:qrcodeContext options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+    NSArray *qrcodeFeaturesArr = [qrcodeDetector featuresInImage:qrcodeImage];
     NSString *qrCodeString = nil;
-    if (!qrcodeArr) {
-        for (CIQRCodeFeature *feature in qrcodeArr) {
+    if (qrcodeFeaturesArr && qrcodeFeaturesArr.count > 0) {
+        for (CIQRCodeFeature *feature in qrcodeFeaturesArr) {
+            if (qrCodeString && qrCodeString.length > 0) {
+                break;
+            }
             qrCodeString = feature.messageString;
         }
     }
     if (qrCodeString) {
         [self stopSession];
     }
-    
     return qrCodeString;
 }
 
